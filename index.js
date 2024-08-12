@@ -1,13 +1,12 @@
 const express = require("express");
 const cors = require("cors");
-
 const { connection } = require("./config/connection");
 const { routers } = require("./router/router");
-
 require("dotenv").config();
 
 const app = express();
 app.use(express.json());
+
 app.use(
   cors({
     origin: "*",
