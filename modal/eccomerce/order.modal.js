@@ -1,5 +1,16 @@
 const mongoose = require("mongoose");
 
+const orderItemsSchema = new mongoose.Schema({
+  productId: {
+    type: mongoose.Schema.type.ObjectId,
+    ref: "Product",
+  },
+  quantity: {
+    type: Number,
+    required: true,
+  },
+});
+
 const orderSchemas = new mongoose.Schema(
   {
     price: {
@@ -9,10 +20,10 @@ const orderSchemas = new mongoose.Schema(
     },
     customer: {
       type: mongoose.Types.ObjectId,
-      ref:"User"
+      ref: "User",
     },
     orderItem: {
-      type: ,
+      type: [orderItemsSchema],
       required: [true, "password is required"],
       unique: true,
     },
